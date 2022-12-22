@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VOTTER ID Login</title>
+	<style type="text/css">
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Quicksand' , sans-serif;
+		}
+		.form-container
+		{
+			border:30px solid black;
+		}
+		.header
+		{
+			background: #3a6186;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to top, #89253e, #3a6186);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to top, #89253e, #3a6186); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+		footer
+		{
+			background: #3a6186;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to top, #89253e, #3a6186);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to top, #89253e, #3a6186); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+		body
+			{
+				font-family: 'Trebuchet MS';
+				font-size: 20px;
+				/*background: linear-gradient(to right, red, purple);*/
+				background: #833ab4;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
+	</style>
+	<script type="text/javascript">
+	function verify()
+	{
+		var Username = document.getElementById("Username");
+		var pass = document.getElementById("pass");
+		var msg = new Array();
+		var flag = 1;
+		var message ="Following Details are Required\n";
+		var message2 ="Following Details are Required<br>";
+
+		
+		if(Username.value == "")
+		{
+			msg[0] = "User Name is Required";
+			flag = 0;
+		} else { msg[0] = ""; }
+
+		if(pass.value == "")
+		{
+			msg[1] = "Password is Required";
+			flag = 0;
+		} else { msg[1] = ""; }
+		
+		
+		if(flag == 0)
+		{
+			// Show Error Messages
+			for(var x=0; x<=1; x++)
+			{
+				if(msg[x] != "")
+				{
+					message += msg[x] + "\n";
+					message2 += msg[x] + "<br>";
+				}
+			}
+			alert(message);
+			document.getElementById("out").innerHTML = "<p style='color:green;'>"+message2+"</p>";
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+</head>
+<body>
+<form style="text-align:center" method="post" action="" onSubmit="return verify()">  
+	<div align="center">
+		<div class="form-container">
+			<h1 class="header" style="background-color: white;color: black;text-align: center">SIGN IN</h1>
+			<h3 id="out"></h3><br>
+			<label style="color:black ;font-size:30px">User Name: </label>
+			<input style="width:200px" "font-size:20px" name="name" id="Username" type="text" placeholder="{user:first_name}">
+			<br><br>
+			<label style="color:black ;font-size:30px">Password: </label>
+			<input style="width: 200px" "font-size:20px" name="password" id="pass" type="password" maxlength="8" placeholder="password">
+			<br><br><br>
+			<input style="width:100px ; height:30px ;  font-size:20px" type="submit" value="Login">
+			<br><br>
+			<div class="links">
+			<a href="#">Forget Password</a>
+			<a href="index.html">Sign up</a>
+		</div><br>
+	</div>
+		<footer align="center">
+		<h4 style="color:black;">&copy; Anuj Manwatkar | Department of Electronics & Telecommunication Engineering | USN: ET20023 | S.B. Jain, Nagpur</h4>
+		<marquee class="name" scrollamount="25" behavior="alternate">&copy; Designed by Anuj Manwatkar </marquee>
+	</footer>
+
+</form>
+</body>
+</html>

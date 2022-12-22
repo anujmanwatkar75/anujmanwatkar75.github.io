@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VOTTER ID SIGN UP</title>
+	<style type="text/css">
+		body
+		{
+			font-family: 'Trebuchet MS';
+			font-size: 20px;
+			background: #12c2e9;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+		.form-container
+		{
+			border:30px solid black;
+		}
+		.header
+		{
+			border: 5px solid black;
+			background: #fc00ff;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */	
+		}
+		footer
+		{
+			background: #fc00ff;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+	</style>
+	<script type="text/javascript">
+	function verify()
+	{
+		var name = document.getElementById("name");
+		var pass = document.getElementById("pass");
+		var confi_pass = document.getElementById("confi_pass");
+		var phone_no = document.getElementById("phone_no");
+		var email_id = document.getElementById("email_id");
+		var age = document.getElementById("age");
+		var gender = document.getElementsByName("gender");
+		var dob = document.getElementById("dob");
+		var lang = document.getElementsByName("lang");
+		var cyc = document.getElementById("cyc");
+		var msg = new Array();
+		var flag = 1;
+		var message ="Following Details are Required\n";
+		var message2 ="Following Details are Required<br>";
+
+		if(name.value == "")
+		{
+			msg[0] = "Name is Required";
+			flag = 0;
+		} else { msg[0] = ""; }
+
+		if(pass.value == "")
+		{
+			msg[1] = "Password is Required";
+			flag = 0;
+		} else { msg[1] = ""; }
+		
+		if(pass.value.length < 8)
+		{
+			msg[2] = "Password must be 8 characters long";
+			flag = 0;
+		} else { msg[2] = ""; }
+
+		if(phone_no.value.length < 10)
+		{
+			msg[3] = "Phone number should be valid";
+			flag = 0;
+		} else { msg[3] = ""; }
+
+		if(!email_id.value.includes("@"))
+		{
+			msg[4] = "Email should be valid";
+			flag = 0;
+		} else { msg[4] = ""; }
+
+		if(age.value < 20)
+		{
+			msg[5] = "Age should be atleast 20";
+			flag = 0;
+		} else { msg[5] = ""; }
+		
+		if(gender[0].checked == false && gender[1].checked == false)
+		{
+			msg[6] = "Select Gender";
+			flag = 0;
+		} else { msg[6] = ""; }
+			
+		if(dob.value == "")
+		{
+			msg[7] = "Please Enter Date of Birth";
+			flag = 0;
+		} else { msg[7] = ""; }
+		
+		if(lang[0].checked == false && lang[1].checked == false && lang[2].checked == false && lang[3].checked == false)
+		{
+			msg[8] = "Select Language";
+			flag = 0;
+		} else { msg[8] = ""; }
+
+		if(cyc.value == "choose your country")
+		{
+			msg[9] = "Please choose the Country";
+			flag = 0;
+		} else { msg[9] = ""; }
+
+		if(flag == 0)
+		{
+			// Show Error Messages
+			for(var x=0; x<=9; x++)
+			{
+				if(msg[x] != "")
+				{
+					message += msg[x] + "\n";
+					message2 += msg[x] + "<br>";
+				}
+			}
+			alert(message);
+			document.getElementById("output").innerHTML = "<p style='color:red;'>"+message2+"</p>";
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+</head>
+
+<body style=" background-size:100% ; background-repeat:no-repeat">
+	<h1 class="header" style="color:black;text-align:center">Votter ID Card Enrollement</h1>
+	<div class="form-container">
+	<h1 style="text-align: center">REGISTRATION FORM</h1>
+	<div  id="output" style="text-align: center"></div>
+
+	<form style="text-align:center" method="post" action="" onSubmit="return verify()">  
+		<label style="color:black">Name:</label>
+		<input style="width:200px" name="name" id="name" type="text" placeholder="Enter Full Name"/></p>
+		<label style="color:black">Password:</label>
+		<input style="width:200px" name="password" id="pass" type="password" maxlength="8" placeholder="Password"/></p>
+		<label style="color:black">Confirm Password:</label>
+		<input style="width:200px" name="confi_pass" id="confi_pass" type="password" maxlength="8" placeholder="Password"/></p>
+		<label style="color:black">Phone number:</label>
+		<input type="text" maxlength="10" name="phone_no" id="phone_no" placeholder="e.g.+91-878-856-9099"/></p>
+		<label style="color:black">E-mail id:</label>
+		<input style="width:200px" name="email_id" id="email_id" type="email" placeholder="abc@gmail.com"/></p>
+		<p style="color:black"> Age should be above 18 years</p>
+		<label style="color:black">Age:</label>
+		<input style="width:100px" name="number" id="age" type="number" placeholder="e.g.19"/></p>
+		<label style="color:black">Gender:</label>
+		<input type="radio" name="gender" value="Male" /> Male
+		<input type="radio" name="gender" value="Female" /> Female<br><br>
+		<label style="color:black">Date of Birth:</label>
+		<input style="width:100px" type="Date" name="dob" id="dob" min="1990-01-01" max="2022-01-01"/><br><br>
+		<label style="color:black"> Language Known:</label><br><br>
+		<input name="lang" type="checkbox"/> English
+		<input name="lang" type="checkbox"/> Telugu
+		<input name="lang" type="checkbox"/> Hindi
+		<input name="lang" type="checkbox"/> Tamil<br><br>
+		<label style="color:black">Choose your continent</label>
+		<select id="cyc" style="width:210px ; height:25px ;  font-size:20px;">
+		<option>choose your country</option>
+		<option value="South America">South America </option>
+		<option value="Mumbai">Mumbai</option>
+		<option value="West Bengal">West Bengal</option>
+		<option value="Dubai">Dubai</option>
+		</select><br><br>
+		<a href ="login.html" /> already had an account LOGIN?</a>
+		</br><br>
+		<button style="width:100px ; height:30px ;  font-size:20px">Submit</button>
+		<input style="width:100px ; height:30px ;  font-size:20px"  type="reset"/>
+		<br><br>
+	</form>
+	</div>
+	<footer align="center">
+		<h4 style="color:black;">&copy; Anuj Manwatkar | Department of Electronics & Telecommunication Engineering | USN: ET20023 | S.B. Jain, Nagpur</h4>
+		<marquee class="name" scrollamount="25" behavior="alternate">&copy; Designed by Anuj Manwatkar </marquee>
+	</footer>
+</body>
+</html>
